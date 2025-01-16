@@ -45,8 +45,6 @@ namespace Alumisoft.Pagamento.Service
 
         public async Task<PagedResponse<ClienteResponse, PagedResult>> GetAllByFilter(PaginationFilter paginationFilter, ClienteFilter filter)
         {
-            //filter.Ativo = true;
-
             var entity = await _repository.SearchPagedAsync(filter, paginationFilter, filter.SortBy);
 
             if (entity.Data.Count() <= 0) AddNotification(Consts.PropertyMsgError, Consts.RegisterNotFound);
