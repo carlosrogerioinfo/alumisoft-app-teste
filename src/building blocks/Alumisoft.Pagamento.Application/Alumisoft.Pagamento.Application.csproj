@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Esterdigi.Core.Db" Version="2.0.0" />
+    <PackageReference Include="Esterdigi.Core.Lib" Version="2.0.0" />
+	<PackageReference Include="AutoMapper" Version="13.0.1" />
+	<PackageReference Include="Twilio" Version="7.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alumisoft.Pagamento.Core\Alumisoft.Pagamento.Core.csproj" />
+    <ProjectReference Include="..\Alumisoft.Pagamento.Domain\Alumisoft.Pagamento.Domain.csproj" />
+    <ProjectReference Include="..\Alumisoft.Pagamento.Infrastructure\Alumisoft.Pagamento.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
