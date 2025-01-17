@@ -32,13 +32,7 @@ namespace Alumisoft.Pagamento.Domain.Entities
         public void AlterarStatusPagamento(StatusPagamento status)
         {
             if (Status == StatusPagamento.Pago || Status == StatusPagamento.Cancelado) AddNotification("Warning", "Não é possível alterar o status de um pagamento já processado.");
-            else Status = StatusPagamento.Pago;
-        }
-
-        public void Cancelar()
-        {
-            if (Status == StatusPagamento.Pago || Status == StatusPagamento.Cancelado) AddNotification("Warning", "Não é possível cancelar um pagamento já processado.");
-            else Status = StatusPagamento.Cancelado;
+            else Status = status;
         }
 
         private void Validate()

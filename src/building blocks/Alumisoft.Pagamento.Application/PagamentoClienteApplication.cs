@@ -48,12 +48,14 @@ namespace Alumisoft.Pagamento.Service
             await _repository.AddAsync(entity);
             await _uow.CommitAsync();
 
+            entity = await _repository.GetAsync(x => x.Id == entity.Id, inc => inc.Cliente);
+
             return _mapper.Map<PagamentoClienteResponse>(entity);
         }
 
         public async Task<ICommandResult> AlterarStatus(PagamentoClienteUpdateStatusRequest request, Guid id)
         {
-            var entity = await _repository.GetAsync(x => x.Id == id);
+            var entity = await _repository.GetAsync(x => x.Id == id, inc => inc.Cliente);
 
             if (entity is null) AddNotification(Consts.PropertyMsgError, "Pagamento não encontrado");
 

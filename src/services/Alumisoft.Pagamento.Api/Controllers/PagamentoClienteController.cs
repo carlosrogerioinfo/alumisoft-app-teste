@@ -4,6 +4,7 @@ using Alumisoft.Pagamento.Service;
 using Esterdigi.Core.Db.Domain.Model;
 using Esterdigi.Core.Lib.Controller;
 using Esterdigi.Core.Lib.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alumisoft.Pagamento.Api.Controllers
@@ -55,7 +56,7 @@ namespace Alumisoft.Pagamento.Api.Controllers
         /// </summary>
         /// <response code="200">Registro que foi alterado com sucesso.</response>
         /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpPut, Route("api/pagamentos/{id}/status")]
+        [HttpPut, Route("api/pagamentos/{id}/status"), AllowAnonymous]
         [ProducesResponseType(typeof(BaseResponse<PagamentoClienteResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
         public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] PagamentoClienteUpdateStatusRequest request)
