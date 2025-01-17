@@ -11,8 +11,5 @@ namespace Alumisoft.Pagamento.Domain.Http.Response
 
     }
 
-    public class ClienteValidationResponse : ICommandResult
-    {
-        public string Message { get; set; }
-    }
+
 }

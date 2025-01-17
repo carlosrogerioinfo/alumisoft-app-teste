@@ -16,6 +16,9 @@ namespace Alumisoft.Pagamento.Api.Configurations
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ClienteApplication>();
 
+            services.AddScoped<IPagamentoClienteRepository, PagamentoClienteRepository>();
+            services.AddScoped<PagamentoClienteApplication>();
+
             return services;
         }
     }

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alumisoft.Pagamento.Api.Controllers
 {
-    [Route("cliente")]
     public class ClienteController : BaseController
     {
         private readonly ClienteApplication _service;
@@ -25,7 +24,7 @@ namespace Alumisoft.Pagamento.Api.Controllers
         /// </summary>
         /// <response code="200">Registro que foi retornado com sucesso.</response>
         /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpGet, Route("get-all")]
+        [HttpGet, Route("api/clientes/get")]
         [ProducesResponseType(typeof(PagedResponse<ClienteResponse, PagedResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
         public async Task<IActionResult> GetAll([FromQuery] PaginationFilter paginationFilter, [FromQuery] ClienteFilter filter)
@@ -39,25 +38,11 @@ namespace Alumisoft.Pagamento.Api.Controllers
         }
 
         /// <summary>
-        /// Retorna informações do cliente logado (obtém o Id pelo token)
-        /// </summary>
-        /// <response code="200">Registro que foi retornado com sucesso.</response>
-        /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpGet, Route("get")]
-        [ProducesResponseType(typeof(BaseResponse<ClienteResponse>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
-        public async Task<IActionResult> GetFromToken()
-        {
-            var data = await _service.Handle(Helper.GetIdFromToken(Request.Headers["Authorization"]));
-            return await Response(data, _service.Notifications);
-        }
-
-        /// <summary>
         /// Insere um registro da tabela cliente
         /// </summary>
         /// <response code="200">Registro que foi inserido com sucesso.</response>
         /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpPost, Route("add")]
+        [HttpPost, Route("api/clientes/add")]
         [ProducesResponseType(typeof(BaseResponse<ClienteResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
         public async Task<IActionResult> Post([FromBody] ClienteRegisterRequest request)
@@ -71,7 +56,7 @@ namespace Alumisoft.Pagamento.Api.Controllers
         /// </summary>
         /// <response code="200">Registro que foi alterado com sucesso.</response>
         /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpPut, Route("update")]
+        [HttpPut, Route("api/clientes/update")]
         [ProducesResponseType(typeof(BaseResponse<ClienteResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
         public async Task<IActionResult> Put([FromBody] ClienteUpdateRequest request)
@@ -85,7 +70,7 @@ namespace Alumisoft.Pagamento.Api.Controllers
         /// </summary>
         /// <response code="200">Registro que foi deletado com sucesso.</response>
         /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpDelete, Route("delete")]
+        [HttpDelete, Route("api/clientes/delete")]
         [ProducesResponseType(typeof(BaseResponse<ClienteResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
         public async Task<IActionResult> Delete()

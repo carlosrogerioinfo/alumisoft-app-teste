@@ -7,7 +7,8 @@ namespace Alumisoft.Pagamento.Api.Configurations
         public static IServiceCollection AddAutoMapperConfiguration(this IServiceCollection services)
         {
             services.AddAutoMapper(
-                typeof(ClienteProfile)
+                typeof(ClienteProfile),
+                typeof(PagamentoClienteProfile)
             );
 
             return services;

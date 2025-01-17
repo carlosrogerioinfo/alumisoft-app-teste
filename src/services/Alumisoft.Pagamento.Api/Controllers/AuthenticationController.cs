@@ -37,7 +37,7 @@ namespace Alumisoft.Pagamento.Api.Controllers
         /// </summary>
         /// <response code="200">As informações do(a) cliente(a) que retornou com sucesso.</response>
         /// <response code="412">Ocorreu uma falha de pre-condição ou um algum erro interno.</response>
-        [HttpPost, Route("login"), AllowAnonymous]
+        [HttpPost, Route("api/login"), AllowAnonymous]
         [ProducesResponseType(typeof(BaseResponse<AuthenticationResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status412PreconditionFailed)]
         public async Task<IActionResult> Post([FromBody] AuthenticationRequest request)

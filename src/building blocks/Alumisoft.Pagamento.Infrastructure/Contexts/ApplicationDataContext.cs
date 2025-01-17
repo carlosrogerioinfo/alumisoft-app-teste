@@ -11,6 +11,7 @@ namespace Alumisoft.Pagamento.Infrastructure.Contexts
         public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options) : base(options) { }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<PagamentoCliente> PagamentosClientes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -20,6 +21,7 @@ namespace Alumisoft.Pagamento.Infrastructure.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new PagamentoClienteMap());
         }
     }
 }
